@@ -64,7 +64,7 @@ export class Autosize implements AfterViewInit {
   adjust(): void{
     // perform height adjustments after input changes, if height is different
     if (this.el.style.height == this.element.nativeElement.scrollHeight + "px") return;
-    this.el.style.overflowX = 'hidden';
+    this.el.style.overflow = 'hidden';
     this.el.style.height = 'auto';
     this.el.style.height = this.el.scrollHeight + "px";
   }
