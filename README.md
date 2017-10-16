@@ -6,7 +6,7 @@ It adjusts the textarea height automatically to any text input, or changes to th
 
 ## Demo
 
-[http://stevepapa.com/angular2-autosize](http://stevepapa.com/angular2-autosize)
+[http://stevepapa.com/ng-autosize](http://stevepapa.com/ng-autosize)
 
 ## Installation:
 
@@ -30,11 +30,26 @@ import {Autosize} from 'ng-autosize';
 })
 ```
 
-Use directly inside your HTML templates
+Use directly inside your HTML templates by adding the word 'autosize' to any textarea.
 
 ```
-<textarea autosize class="my-textarea">Hello, this is an example of Autosize in Angular2.</textarea>
+<textarea autosize>Hello, this is an example of Autosize in Angular2.</textarea>
 ```
+
+## Extra Configuration Options:
+
+Set a minimum height on your textarea.
+
+```
+<textarea autosize [minHeight]="60px">Hello, this is an example of Autosize in Angular2 with a Min Height.</textarea>
+```
+
+Set a maximum height on your textarea.
+
+```
+<textarea autosize [maxHeight]="120px">Hello, this is an example of Autosize in Angular2 with a Max Height.</textarea>
+```
+
 
 ## Author
 
