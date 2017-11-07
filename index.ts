@@ -1,7 +1,10 @@
-import {Autosize} from './src/autosize.directive';
-
 export * from './src/autosize.directive';
 
-export default {
-  directives: [Autosize]
-}
+import { NgModule } from '@angular/core';
+import { ngAutosizeDirective } from './src/autosize.directive';
+
+@NgModule({
+  declarations: [ngAutosizeDirective],
+  exports: [ngAutosizeDirective],
+})
+export class ngAutoSizeModule { }
