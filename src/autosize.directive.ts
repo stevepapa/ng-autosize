@@ -1,10 +1,10 @@
-import { Input, AfterViewInit, ElementRef, HostListener, Directive } from '@angular/core';
+import { Input, AfterContentChecked, ElementRef, HostListener, Directive } from '@angular/core';
 
 @Directive({
   selector: 'textarea[autosize]'
 })
 
-export class Autosize implements AfterViewInit {
+export class Autosize implements AfterContentChecked {
 
   private el: HTMLElement;
   private _minHeight: string;
@@ -50,7 +50,7 @@ export class Autosize implements AfterViewInit {
     this._clientWidth = this.el.clientWidth;
   }
 
-  ngAfterViewInit(): void {
+  ngAfterContentChecked(): void {
     // set element resize allowed manually by user
     const style = window.getComputedStyle(this.el, null);
     if (style.resize === 'both') {
