@@ -1,7 +1,8 @@
 import {Autosize} from './src/autosize.directive';
-
-export * from './src/autosize.directive';
+import {AutosizeModule} from './src/autosize.module';
+export * from './src/autosize.module';
 
 export default {
-  directives: [Autosize]
+  directives: [Autosize],
+  modules: [AutosizeModule]
 }
