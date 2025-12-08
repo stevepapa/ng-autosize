@@ -28,6 +28,8 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ng-autosize/tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "main": "projects/ng-autosize/src/test.ts",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
