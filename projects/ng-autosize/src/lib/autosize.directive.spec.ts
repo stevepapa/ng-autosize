@@ -1,18 +1,18 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AutosizeDirective } from './autosize.directive';
+import { Autosize } from './autosize.directive';
 
 @Component({
   standalone: true,
-  imports: [AutosizeDirective],
+  imports: [Autosize],
   template: `<textarea autosize></textarea>`
 })
 class TestHostComponent {}
 
 @Component({
   standalone: true,
-  imports: [AutosizeDirective],
+  imports: [Autosize],
   template: `<textarea autosize [minHeight]="minHeight" [maxHeight]="maxHeight"></textarea>`
 })
 class TestHostWithInputsComponent {
@@ -20,7 +20,7 @@ class TestHostWithInputsComponent {
   maxHeight = '300';
 }
 
-describe('AutosizeDirective', () => {
+describe('Autosize', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let textarea: DebugElement;
 
@@ -34,7 +34,7 @@ describe('AutosizeDirective', () => {
   });
 
   it('should create the directive', () => {
-    const directive = textarea.injector.get(AutosizeDirective);
+    const directive = textarea.injector.get(Autosize);
     expect(directive).toBeTruthy();
   });
 
@@ -65,7 +65,7 @@ describe('AutosizeDirective', () => {
   });
 
   it('should handle window resize', () => {
-    const directive = textarea.injector.get(AutosizeDirective);
+    const directive = textarea.injector.get(Autosize);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     spyOn(directive as any, 'adjust');
 
@@ -82,7 +82,7 @@ describe('AutosizeDirective', () => {
     element.style.resize = 'both';
     fixture.detectChanges();
 
-    const directive = textarea.injector.get(AutosizeDirective);
+    const directive = textarea.injector.get(Autosize);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (directive as any).ngAfterViewInit();
 
@@ -94,7 +94,7 @@ describe('AutosizeDirective', () => {
     element.style.resize = 'vertical';
     fixture.detectChanges();
 
-    const directive = textarea.injector.get(AutosizeDirective);
+    const directive = textarea.injector.get(Autosize);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (directive as any).ngAfterViewInit();
 

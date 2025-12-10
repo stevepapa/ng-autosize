@@ -4,7 +4,7 @@ import { AfterViewInit, Directive, ElementRef, HostListener, Input } from '@angu
   selector: 'textarea[autosize]',
   standalone: true
 })
-export class AutosizeDirective implements AfterViewInit {
+export class Autosize implements AfterViewInit {
 
   private el: HTMLElement;
   private _minHeight?: string;
