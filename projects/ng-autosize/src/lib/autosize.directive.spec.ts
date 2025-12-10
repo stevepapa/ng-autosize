@@ -8,26 +8,26 @@ import { AutosizeDirective } from './autosize.directive';
   imports: [AutosizeDirective],
   template: `<textarea autosize></textarea>`
 })
-class TestComponent {}
+class TestHostComponent {}
 
 @Component({
   standalone: true,
   imports: [AutosizeDirective],
   template: `<textarea autosize [minHeight]="minHeight" [maxHeight]="maxHeight"></textarea>`
 })
-class TestComponentWithInputs {
+class TestHostWithInputsComponent {
   minHeight = '100';
   maxHeight = '300';
 }
 
 describe('AutosizeDirective', () => {
-  let fixture: ComponentFixture<TestComponent>;
+  let fixture: ComponentFixture<TestHostComponent>;
   let textarea: DebugElement;
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      imports: [TestComponent]
-    }).createComponent(TestComponent);
+      imports: [TestHostComponent]
+    }).createComponent(TestHostComponent);
 
     textarea = fixture.debugElement.query(By.css('textarea'));
     fixture.detectChanges();
@@ -65,14 +65,15 @@ describe('AutosizeDirective', () => {
   });
 
   it('should handle window resize', () => {
-    const element = textarea.nativeElement as HTMLTextAreaElement;
     const directive = textarea.injector.get(AutosizeDirective);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     spyOn(directive as any, 'adjust');
 
     window.dispatchEvent(new Event('resize'));
     fixture.detectChanges();
 
     // adjust should be called on resize
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((directive as any).adjust).toHaveBeenCalled();
   });
 
@@ -82,6 +83,7 @@ describe('AutosizeDirective', () => {
     fixture.detectChanges();
 
     const directive = textarea.injector.get(AutosizeDirective);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (directive as any).ngAfterViewInit();
 
     expect(element.style.resize).toBe('horizontal');
@@ -93,19 +95,20 @@ describe('AutosizeDirective', () => {
     fixture.detectChanges();
 
     const directive = textarea.injector.get(AutosizeDirective);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (directive as any).ngAfterViewInit();
 
     expect(element.style.resize).toBe('none');
   });
 
   describe('with minHeight and maxHeight inputs', () => {
-    let fixtureWithInputs: ComponentFixture<TestComponentWithInputs>;
+    let fixtureWithInputs: ComponentFixture<TestHostWithInputsComponent>;
     let textareaWithInputs: DebugElement;
 
     beforeEach(() => {
       fixtureWithInputs = TestBed.configureTestingModule({
-        imports: [TestComponentWithInputs]
-      }).createComponent(TestComponentWithInputs);
+        imports: [TestHostWithInputsComponent]
+      }).createComponent(TestHostWithInputsComponent);
 
       textareaWithInputs = fixtureWithInputs.debugElement.query(By.css('textarea'));
       fixtureWithInputs.detectChanges();

@@ -35,6 +35,15 @@
               "zone.js/testing"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ng-autosize/**/*.ts",
+              "projects/ng-autosize/**/*.html"
+            ]
+          }
         }
       }
     }

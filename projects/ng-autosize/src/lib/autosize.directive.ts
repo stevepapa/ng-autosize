@@ -29,8 +29,8 @@ export class AutosizeDirective implements AfterViewInit {
     this.updateMaxHeight();
   }
 
-  @HostListener('window:resize', ['$event.target'])
-  onResize(textArea: HTMLTextAreaElement): void {
+  @HostListener('window:resize')
+  onResize(): void {
     // Only apply adjustment if element width had changed.
     if (this.el.clientWidth === this._clientWidth) {
       return;
@@ -39,8 +39,8 @@ export class AutosizeDirective implements AfterViewInit {
     this.adjust();
   }
 
-  @HostListener('input', ['$event.target'])
-  onInput(textArea: HTMLTextAreaElement): void {
+  @HostListener('input')
+  onInput(): void {
     this.adjust();
   }
 
