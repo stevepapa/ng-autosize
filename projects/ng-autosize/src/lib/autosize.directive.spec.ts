@@ -25,9 +25,11 @@ describe('Autosize', () => {
   let textarea: DebugElement;
 
   beforeEach(() => {
-    fixture = TestBed.configureTestingModule({
-      imports: [TestHostComponent]
-    }).createComponent(TestHostComponent);
+    TestBed.configureTestingModule({
+      imports: [TestHostComponent, TestHostWithInputsComponent]
+    });
+
+    fixture = TestBed.createComponent(TestHostComponent);
 
     textarea = fixture.debugElement.query(By.css('textarea'));
     fixture.detectChanges();
@@ -106,9 +108,7 @@ describe('Autosize', () => {
     let textareaWithInputs: DebugElement;
 
     beforeEach(() => {
-      fixtureWithInputs = TestBed.configureTestingModule({
-        imports: [TestHostWithInputsComponent]
-      }).createComponent(TestHostWithInputsComponent);
+      fixtureWithInputs = TestBed.createComponent(TestHostWithInputsComponent);
 
       textareaWithInputs = fixtureWithInputs.debugElement.query(By.css('textarea'));
       fixtureWithInputs.detectChanges();
