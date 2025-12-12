@@ -1,51 +1,50 @@
-import { Input, AfterViewInit, ElementRef, HostListener, Directive } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: 'textarea[autosize]'
+  selector: 'textarea[autosize]',
+  standalone: true
 })
-
 export class Autosize implements AfterViewInit {
 
   private el: HTMLElement;
-  private _minHeight: string;
-  private _maxHeight: string;
-  private _lastHeight: number;
+  private _minHeight?: string;
+  private _maxHeight?: string;
   private _clientWidth: number;
 
   @Input('minHeight')
-  get minHeight(): string {
+  get minHeight(): string | undefined {
     return this._minHeight;
   }
-  set minHeight(val: string) {
+  set minHeight(val: string | undefined) {
     this._minHeight = val;
     this.updateMinHeight();
   }
 
   @Input('maxHeight')
-  get maxHeight(): string {
+  get maxHeight(): string | undefined {
     return this._maxHeight;
   }
-  set maxHeight(val: string) {
+  set maxHeight(val: string | undefined) {
     this._maxHeight = val;
     this.updateMaxHeight();
   }
 
-  @HostListener('window:resize', ['$event.target'])
-    onResize(textArea: HTMLTextAreaElement): void {
-      // Only apply adjustment if element width had changed.
-      if (this.el.clientWidth === this._clientWidth) {
-        return
-      };
-      this._clientWidth = this.element.nativeElement.clientWidth;
-      this.adjust();
+  @HostListener('window:resize')
+  onResize(): void {
+    // Only apply adjustment if element width had changed.
+    if (this.el.clientWidth === this._clientWidth) {
+      return;
     }
+    this._clientWidth = this.element.nativeElement.clientWidth;
+    this.adjust();
+  }
 
-  @HostListener('input', ['$event.target'])
-    onInput(textArea: HTMLTextAreaElement): void {
-      this.adjust();
-    }
+  @HostListener('input')
+  onInput(): void {
+    this.adjust();
+  }
 
-  constructor(public element: ElementRef) {
+  constructor(private readonly element: ElementRef<HTMLTextAreaElement>) {
     this.el = element.nativeElement;
     this._clientWidth = this.el.clientWidth;
   }
@@ -64,7 +63,7 @@ export class Autosize implements AfterViewInit {
 
   adjust(): void {
     // perform height adjustments after input changes, if height is different
-    if (this.el.style.height == this.element.nativeElement.scrollHeight + 'px') {
+    if (this.el.style.height === this.element.nativeElement.scrollHeight + 'px') {
       return;
     }
     this.el.style.overflow = 'hidden';
@@ -74,12 +73,15 @@ export class Autosize implements AfterViewInit {
 
   updateMinHeight(): void {
     // Set textarea min height if input defined
-    this.el.style.minHeight = this._minHeight + 'px';
+    if (this._minHeight) {
+      this.el.style.minHeight = this._minHeight + 'px';
+    }
   }
 
   updateMaxHeight(): void {
     // Set textarea max height if input defined
-    this.el.style.maxHeight = this._maxHeight + 'px';
+    if (this._maxHeight) {
+      this.el.style.maxHeight = this._maxHeight + 'px';
+    }
   }
-
 }

@@ -1,0 +1,14 @@
+{
+  "name": "ng-autosize",
+  "version": "2.0.0",
+  "description": "Angular directive that automatically adjusts textarea height to fit content",
+  "author": "stevepapa <dev@stevepapa.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.0"
+  }
+}
