@@ -24,7 +24,7 @@ npm install ng-autosize
 ## Requirements
 
 - **Angular:** 19.0.0 or higher
-- **TypeScript:** 5.6.0 or higher
+- **TypeScript:** 5.6.x
 
 ## Usage
 
@@ -105,7 +105,7 @@ ng-autosize v2.0 introduces breaking changes for Angular 19 compatibility.
 
 1. **Minimum Angular version:** Now requires Angular 19+
 2. **Standalone-first:** No longer exports an NgModule
-3. **TypeScript:** Requires TypeScript 5.6.0 or higher
+3. **TypeScript:** Requires TypeScript 5.6.x
 
 ### Migration Steps
 

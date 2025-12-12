@@ -1,6 +1,6 @@
 {
   "name": "ng-autosize",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Angular Directive that automatically adjusts textarea height to fit content",
   "repository": {
     "type": "git",
@@ -11,6 +11,9 @@
     "build": "ng build ng-autosize",
     "test": "ng test ng-autosize",
     "lint": "ng lint"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "angular",
@@ -25,13 +28,14 @@
     "elastic",
     "height"
   ],
-  "author": "Steve Papa <dev@stevepapa.com>",
+  "author": "stevepapa <dev@stevepapa.com>",
   "main": "index.ts",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": "^19.0.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.19",
     "@angular-eslint/builder": "^19.0.0",
     "@angular-eslint/eslint-plugin": "^19.0.0",
     "@angular-eslint/eslint-plugin-template": "^19.0.0",
@@ -45,9 +49,9 @@
     "@angular/core": "^19.0.0",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
+    "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "@types/jasmine": "~5.1.0",
     "eslint": "^9.0.0",
     "jasmine-core": "~5.4.0",
     "karma": "~6.4.0",
